@@ -2,13 +2,14 @@ import type { Garden } from '../components/garden';
 import type { Hero } from '../components/hero';
 import type { FX } from '../components/fx';
 import type { Flock } from '../components/butterfly';
+import type { BloomBed } from '../components/bloombed';
 import { scene1 } from './scene1-garden';
 import { scene2 } from './scene2-journey';
 import { scene3 } from './scene3-rose';
 import { scene4 } from './scene4-butterflies';
-import { scene5 } from './scene5-letter';
+import { scene5 } from './scene5-garden';
 
-export interface Parts { garden: Garden; hero: Hero; fx: FX; flock: Flock; ui: HTMLElement }
+export interface Parts { garden: Garden; hero: Hero; fx: FX; flock: Flock; bed: BloomBed; ui: HTMLElement }
 export interface Ctx extends Parts {
   W(): number; H(): number;
   alive(): boolean;
@@ -82,11 +83,11 @@ export class Director {
   }
 
   restart() {
-    document.body.classList.remove('reading-letter');
     this.p.flock.clearNow();
     this.p.fx.clear();
     this.p.hero.reset();
     this.p.garden.reset();
+    this.p.bed.reset();
     this.go(1);
   }
 }

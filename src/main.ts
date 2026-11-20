@@ -5,6 +5,7 @@ import { Hero } from './components/hero';
 import { FX } from './components/fx';
 import { Flock } from './components/butterfly';
 import { Ambient } from './components/sound';
+import { BloomBed } from './components/bloombed';
 import { Director } from './scenes/director';
 
 document.title = CONTENT.title;
@@ -19,7 +20,8 @@ const garden = new Garden(document.getElementById('garden')!);
 const hero = new Hero(document.getElementById('hero')!);
 const fx = new FX(document.getElementById('fx') as HTMLCanvasElement);
 const flock = new Flock(document.getElementById('flock')!);
-const director = new Director({ garden, hero, fx, flock, ui: document.getElementById('ui')! });
+const bed = new BloomBed(document.getElementById('bed')!, fx);
+const director = new Director({ garden, hero, fx, flock, bed, ui: document.getElementById('ui')! });
 
 // optional ambient sound, off until she taps it
 const ambient = new Ambient();
@@ -35,6 +37,7 @@ const loop = (now: number) => {
   last = now;
   const t = now / 1000;
   garden.update(t, dt);
+  bed.update(t, dt);
   flock.update(t, dt);
   fx.frame(t, dt);
   requestAnimationFrame(loop);

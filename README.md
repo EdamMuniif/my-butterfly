@@ -6,7 +6,7 @@ A five-scene interactive gift, built mobile-first for 390 × 844, plus a heart Q
 2. **The Journey Back to You**: the camera drifts through the garden and the message plays line by line. Tap to move ahead. A light trail leads to a glowing butterfly.
 3. **The Blue Rose**: touch the rose and the bud opens into the full bloom, with a light ring and glowing petals.
 4. **Three Little Butterflies**: tap each one to read its message. Each butterfly then lands on a flower.
-5. **The Final Letter**: tap the seal, the envelope opens and the letter comes out. "Make the Garden Bloom" lights every rose, sends petals up, flies butterflies through and draws a heart of light.
+5. **The Blooming Garden**: rows of blue roses open together on a loop. Touch any rose and it blooms straight away. A heart of light, the last line, and Replay.
 
 ## Change the words
 
