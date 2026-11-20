@@ -31,7 +31,7 @@ export const CONTENT = {
   },
 
   scene4: {
-    hint: 'Each butterfly is carrying a message. Tap one.',
+    hint: 'Tap a butterfly',
     counter: (found: number, total: number) => `${found} of ${total} found`,
     close: 'Keep looking',
     butterflies: [

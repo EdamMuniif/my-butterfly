@@ -97,6 +97,6 @@ export class Flock {
   }
 
   tagged(tag: string) { return this.list.filter((b) => b.tag === tag); }
-  dismiss(keep: Butterfly[] = []) { for (const b of this.list) if (!keep.includes(b)) b.exit(); }
+  dismiss(keep: Butterfly[] = []) { for (const b of this.list) if (b.tag !== 'amb' && !keep.includes(b)) b.exit(); }
   clearNow() { this.list.forEach((b) => b.remove()); this.list = []; }
 }

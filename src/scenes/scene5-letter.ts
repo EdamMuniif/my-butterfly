@@ -36,7 +36,7 @@ export async function scene5(c: Ctx) {
 
   // the garden grows quieter; roses glow at the edges
   c.garden.showCluster(true);
-  c.garden.setVeil(0.4, 2600);
+  c.garden.setVeil(0.28, 2600);
   c.garden.setGlow(0.55, ['edges', 'cluster']);
   c.garden.cam = { z: c.garden.cam.z, y: 0 };
   c.hero.setState('top');

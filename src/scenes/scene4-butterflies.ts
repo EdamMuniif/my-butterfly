@@ -27,7 +27,7 @@ export async function scene4(c: Ctx) {
 
   c.hero.setState('hidden');
   c.garden.showCluster(true);
-  c.garden.setVeil(0.1, 1800);
+  c.garden.setVeil(0.02, 1800);
   c.garden.setGlow(0.3, ['cluster']);
   c.flock.dismiss();
 

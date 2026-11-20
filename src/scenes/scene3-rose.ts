@@ -8,8 +8,7 @@ const C = CONTENT.scene3;
 export async function scene3(c: Ctx) {
   const s = c.section('s3', `
     <div class="top">
-      <p class="line" data-t="l0"></p>
-      <p class="line" data-t="l1"></p>
+      <div class="slot"><p class="line" data-t="l0"></p><p class="line" data-t="l1"></p></div>
       <button class="line prompt" type="button" data-t="prompt"></button>
     </div>
     <div class="bottom">
@@ -19,8 +18,7 @@ export async function scene3(c: Ctx) {
   fill(s, { l0: C.lines[0], l1: C.lines[1], prompt: C.prompt, reveal: C.reveal, cta: C.cta });
   const $ = (q: string) => s.querySelector(q) as HTMLElement;
 
-  c.garden.setVeil(0.2, 2200);
-  c.garden.showCluster(false);
+  c.garden.setVeil(0.06, 2200);
   const z0 = c.garden.cam.z, y0 = c.garden.cam.y;
   void tween(2600, (p) => { if (!c.alive()) return; c.garden.cam.z = z0 + (0.12 - z0) * p; c.garden.cam.y = y0 * (1 - p); });
   c.hero.setState('center');
@@ -35,7 +33,8 @@ export async function scene3(c: Ctx) {
   $('.cta').addEventListener('click', () => { haptic(); c.go(4); }, { once: true });
 
   await c.sleep(1500); show($('[data-t="l0"]'));
-  await c.sleep(1900); show($('[data-t="l1"]'));
+  await c.sleep(2600); hide($('[data-t="l0"]'));
+  await c.sleep(700); show($('[data-t="l1"]'));
   await c.sleep(1700); show($('.prompt'));
 
   await new Promise<void>((res) => {
@@ -45,13 +44,13 @@ export async function scene3(c: Ctx) {
   if (!c.alive()) return;
 
   haptic([18, 40, 18]);
-  hide($('.prompt'));
+  hide($('.prompt')); hide($('[data-t="l1"]'));
   const h = c.hero.head();
   const blooming = c.hero.bloom();
   await c.sleep(500);
   c.fx.burstPetals(h.x, h.y, reduced ? 10 : 28);
   c.garden.setGlow(0.4, ['edges']);
-  void tween(3000, (p) => { if (c.alive()) c.garden.setVeil(0.2 - 0.12 * p, 0); }, ease.outCubic);
+  void tween(3000, (p) => { if (c.alive()) c.garden.setVeil(0.06 * (1 - p), 0); }, ease.outCubic);
   await blooming;
   await c.sleep(400); show($('.quote'));
   await c.sleep(2400); show($('.bottom .ctaw'));

@@ -14,11 +14,23 @@ const FAR: Rose[] = [
   { src: ROSES.openBlur, x: 10, b: 50, h: 8, ar: O, op: 0.22, hy: 50 },
   { src: ROSES.openBlur, x: 88, b: 56, h: 7, ar: O, op: 0.2, hy: 50 },
 ];
+const BED: Rose[] = [
+  { src: ROSES.open, x: 6, b: 16, h: 9, ar: O, r: -10, op: 0.8, hy: 50 },
+  { src: ROSES.open, x: 19, b: 21, h: 7, ar: O, r: 6, op: 0.65, hy: 50 },
+  { src: ROSES.open, x: 40, b: 19, h: 8, ar: O, r: -4, op: 0.7, hy: 50 },
+  { src: ROSES.open, x: 61, b: 22, h: 7, ar: O, r: 8, op: 0.65, hy: 50 },
+  { src: ROSES.open, x: 82, b: 18, h: 8.5, ar: O, r: -7, op: 0.75, hy: 50 },
+  { src: ROSES.open, x: 96, b: 14, h: 10, ar: O, r: 12, op: 0.8, hy: 50 },
+  { src: ROSES.stemBlur, x: 35, b: 30, h: 22, ar: S, op: 0.45, r: -6, hy: 16 },
+  { src: ROSES.stemBlur, x: 66, b: 32, h: 20, ar: S, op: 0.4, r: 7, hy: 16 },
+];
 const MID: Rose[] = [
   { src: ROSES.stem, x: 1, b: -6, h: 56, ar: S, r: -11, hy: 16 },
   { src: ROSES.stem, x: 99, b: -4, h: 60, ar: S, r: 10, hy: 16 },
   { src: ROSES.stem, x: 21, b: -20, h: 42, ar: S, r: -5, op: 0.9, hy: 16 },
   { src: ROSES.stem, x: 80, b: -22, h: 44, ar: S, r: 6, op: 0.9, hy: 16 },
+  { src: ROSES.stem, x: 9, b: 8, h: 34, ar: S, r: 14, op: 0.85, hy: 16 },
+  { src: ROSES.stem, x: 91, b: 10, h: 32, ar: S, r: -13, op: 0.85, hy: 16 },
 ];
 const CLUSTER: Rose[] = [
   { src: ROSES.open, x: 29, b: 10, h: 12, ar: O, r: -8, hy: 50 },
@@ -45,12 +57,14 @@ export class Garden {
   constructor(root: HTMLElement) {
     root.innerHTML = '<div class="sky"></div><div class="moon"></div><div class="beam"></div>';
     this.addLayer(root, 'far', 0.15, FAR, 'far');
+    this.addLayer(root, 'bed', 0.25, BED, 'far');
     this.addLayer(root, 'mid', 0.35, MID, 'edges');
     this.cluster = this.addLayer(root, 'cluster', 0.5, CLUSTER, 'cluster');
     this.addLayer(root, 'near', 0.9, NEAR, 'near');
     this.veil = document.createElement('div');
     this.veil.className = 'veil';
     root.append(this.veil);
+    this.showCluster(true);
 
     if (!reduced) {
       addEventListener('pointermove', (e) => {
@@ -101,7 +115,7 @@ export class Garden {
     this.cam = { z: 0, y: 0 };
     this.setVeil(1, 0);
     this.setGlow(0);
-    this.showCluster(false);
+    this.showCluster(true);
   }
 
   update(t: number, dt: number) {

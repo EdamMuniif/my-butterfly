@@ -13,7 +13,7 @@ export async function scene2(c: Ctx) {
   const cta = s.querySelector('.cta') as HTMLButtonElement;
   cta.textContent = C.cta;
 
-  c.garden.setVeil(0.04, 2500);
+  c.garden.setVeil(0, 2500);
   const z0 = c.garden.cam.z;
   void tween(9000, (p) => { if (!c.alive()) return; c.garden.cam.z = z0 + p * 0.38; c.garden.cam.y = -p * 40; }, ease.inOutSine);
 
@@ -40,9 +40,9 @@ export async function scene2(c: Ctx) {
     const p = document.createElement('p');
     p.className = 'line';
     p.textContent = text;
-    stack.querySelectorAll('.line').forEach((e) => e.classList.add('past'));
+    stack.querySelectorAll('.line.on').forEach((e) => e.classList.remove('on'));
     stack.append(p);
-    await c.sleep(50);
+    await c.sleep(stack.children.length > 1 ? 700 : 50);
     show(p);
     await c.sleepOrTap(2300 + text.length * 34, s);
   }
