@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050C1E" />
+  <meta name="description" content="Every butterfly found its way here. So did I." />
+  <title>A Little Blue Garden</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦋</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="garden" aria-hidden="true"></div>
+  <div id="hero"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div id="flock"></div>
+  <main id="ui"></main>
+  <button id="sound" type="button" aria-label="Ambient sound" aria-pressed="false">
+    <svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9l5 6M21 9l-5 6" fill="none" stroke-width="1.6"/></svg>
+    <svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" fill="none" stroke-width="1.6"/></svg>
+  </button>
+  <noscript><p style="color:#D6F2FF;font-family:serif;padding:2rem;text-align:center">Turn on JavaScript to open your garden.</p></noscript>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
